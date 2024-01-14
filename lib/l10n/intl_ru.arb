@@ -1,0 +1,12 @@
+{
+    "hello": "Привет",
+    "goodbye":"Прощание",
+    "news":"Новости",
+    "cars":"Машина",
+    "passwordMustContain":"Пароль должен содержать",
+    "changePassword":"Изменить пароль",
+    "currentPassword":"Текущий пароль",
+    "newPassword":"Новый пароль",
+    "confirmPassword":"Подтвердите пароль"
+
+}

@@ -1,0 +1,13 @@
+{
+    "hello": "Hello",
+    "goodbye":"Goodbye",
+    "news":"News",
+    "cars":"Cars",
+    "passwordMustContain":"Password must contain",
+    "changePassword":"Change Password",
+    "currentPassword":"Current Password",
+    "newPassword":"New Password",
+    "confirmPassword":"Confirm Password"
+    
+   
+}
