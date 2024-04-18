@@ -10,7 +10,7 @@ OutlinedButtonThemeData outlinedButton = OutlinedButtonThemeData(
     ),
     shape: MaterialStatePropertyAll(
       RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(8.0),
+        borderRadius: BorderRadius.circular(10.0),
       ),
     ),
     elevation: const MaterialStatePropertyAll(0),

@@ -1,4 +1,3 @@
-import 'package:bmw_world/application/features/bmw_world/data/model/post.dart';
 import 'package:bmw_world/application/features/bmw_world/domain/entities/post_entity.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -11,8 +10,8 @@ class PostWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final content = post.content ??"";
-    final title = post.title ??"";
+    final content = post.content ?? "";
+    final title = post.title ?? "";
     return GestureDetector(
       onTap: onTap,
       child: Card(
@@ -21,28 +20,22 @@ class PostWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-               PostTitle(title: title),
+              PostTitle(title: title),
               const SizedBox(height: 10),
               PostImage(imageUrl: post.imageUrl ?? ""),
               const SizedBox(height: 10),
-               PostContent(content:content),
+              PostContent(content: content),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Text(
                     "${post.likes}",
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: Theme.of(context).textTheme.headlineSmall,
                   ),
                   IconButton(onPressed: () {}, icon: const Icon(Icons.favorite)),
-                  const Text(
+                   Text(
                     "100",
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: Theme.of(context).textTheme.headlineSmall,
                   ),
                   IconButton(onPressed: () {}, icon: const Icon(Icons.comment)),
                 ],
@@ -64,10 +57,7 @@ class PostTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       title,
-      style: const TextStyle(
-        fontSize: 19,
-        fontWeight: FontWeight.bold,
-      ),
+      style:  Theme.of(context).textTheme.headlineLarge,
     );
   }
 }
@@ -81,10 +71,7 @@ class PostContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       content,
-      style: const TextStyle(
-        fontSize: 17,
-        fontWeight: FontWeight.normal,
-      ),
+      style:  Theme.of(context).textTheme.bodyLarge,
     );
   }
 }
@@ -103,7 +90,7 @@ class PostImage extends StatelessWidget {
         errorWidget: (context, url, error) {
           return const Center(
             child: Text(
-              "_errorText",
+              "Not available",
               style: TextStyle(
                 fontWeight: FontWeight.bold,
               ),
@@ -114,8 +101,3 @@ class PostImage extends StatelessWidget {
     );
   }
 }
-
-const String postContentText =
-    "Now in its sixth generation, the new BMW M5 Competition has taken an iconic design language and accentuated it with eye-catching elements";
-
-const String titleText = "Bmw M5 Competition";

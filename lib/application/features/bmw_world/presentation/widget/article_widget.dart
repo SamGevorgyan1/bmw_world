@@ -1,23 +1,21 @@
-import 'package:bmw_world/application/features/bmw_world/data/model/article.dart';
+import 'package:bmw_world/application/features/bmw_world/domain/entities/article_entity.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class ArticleWidget extends StatelessWidget {
-  const ArticleWidget({super.key, required this.articleModel, required this.onTap});
+  const ArticleWidget({super.key, required this.article, required this.onTap});
 
   final VoidCallback onTap;
-  final ArticleModel articleModel;
+  final ArticleEntity article;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
       child: CachedNetworkImage(
-        imageUrl: articleModel.mainImage ?? "",
+        imageUrl: article.mainImage ?? "",
         imageBuilder: (context, imageProvider) {
           return Container(
-            width: 100,
-            height: 100,
             padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
               image: DecorationImage(
@@ -27,13 +25,7 @@ class ArticleWidget extends StatelessWidget {
             ),
             child: Align(
               alignment: Alignment.bottomLeft,
-              child: Text(
-                articleModel.title ?? "",
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+              child: Text(article.title ?? "", style: Theme.of(context).textTheme.headlineSmall),
             ),
           );
         },

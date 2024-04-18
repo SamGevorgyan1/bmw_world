@@ -50,41 +50,121 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `Hello`
-  String get hello {
+  /// `Settings`
+  String get settings {
     return Intl.message(
-      'Hello',
-      name: 'hello',
+      'Settings',
+      name: 'settings',
       desc: '',
       args: [],
     );
   }
 
-  /// `Goodbye`
-  String get goodbye {
+  /// `Help and Support`
+  String get helpSupport {
     return Intl.message(
-      'Goodbye',
-      name: 'goodbye',
+      'Help and Support',
+      name: 'helpSupport',
       desc: '',
       args: [],
     );
   }
 
-  /// `News`
-  String get news {
+  /// `Privacy and Data`
+  String get privacyData {
     return Intl.message(
-      'News',
-      name: 'news',
+      'Privacy and Data',
+      name: 'privacyData',
       desc: '',
       args: [],
     );
   }
 
-  /// `Cars`
-  String get cars {
+  /// `Sign Out`
+  String get signOut {
     return Intl.message(
-      'Cars',
-      name: 'cars',
+      'Sign Out',
+      name: 'signOut',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `About`
+  String get about {
+    return Intl.message(
+      'About',
+      name: 'about',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit Profile`
+  String get editProfile {
+    return Intl.message(
+      'Edit Profile',
+      name: 'editProfile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Welcome Back`
+  String get welcomeBack {
+    return Intl.message(
+      'Welcome Back',
+      name: 'welcomeBack',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your details below`
+  String get enterDetailsBelow {
+    return Intl.message(
+      'Enter your details below',
+      name: 'enterDetailsBelow',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Don't have an account?`
+  String get dontHaveAnAccount {
+    return Intl.message(
+      'Don\'t have an account?',
+      name: 'dontHaveAnAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Get started`
+  String get getStarted {
+    return Intl.message(
+      'Get started',
+      name: 'getStarted',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email`
+  String get email {
+    return Intl.message(
+      'Email',
+      name: 'email',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password`
+  String get password {
+    return Intl.message(
+      'Password',
+      name: 'password',
       desc: '',
       args: [],
     );
@@ -137,6 +217,296 @@ class S {
       name: 'confirmPassword',
       desc: '',
       args: [],
+    );
+  }
+
+  /// `Forgot password?`
+  String get forgotPassword {
+    return Intl.message(
+      'Forgot password?',
+      name: 'forgotPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Login`
+  String get login {
+    return Intl.message(
+      'Login',
+      name: 'login',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Register`
+  String get register {
+    return Intl.message(
+      'Register',
+      name: 'register',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create Account`
+  String get createAccount {
+    return Intl.message(
+      'Create Account',
+      name: 'createAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Already have an account?`
+  String get alreadyHaveAccount {
+    return Intl.message(
+      'Already have an account?',
+      name: 'alreadyHaveAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your Name`
+  String get yourName {
+    return Intl.message(
+      'Your Name',
+      name: 'yourName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your Name`
+  String get yourLastname {
+    return Intl.message(
+      'Your Name',
+      name: 'yourLastname',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter your email`
+  String get plsEnterEmail {
+    return Intl.message(
+      'Please enter your email',
+      name: 'plsEnterEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter a valid email`
+  String get plsEnterValidEmail {
+    return Intl.message(
+      'Please enter a valid email',
+      name: 'plsEnterValidEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter your password`
+  String get plsEnterPassword {
+    return Intl.message(
+      'Please enter your password',
+      name: 'plsEnterPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter a valid password`
+  String get plsEnterValidPassword {
+    return Intl.message(
+      'Please enter a valid password',
+      name: 'plsEnterValidPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter valid email and password`
+  String get plsEnterValidEmailAndPassword {
+    return Intl.message(
+      'Please enter valid email and password',
+      name: 'plsEnterValidEmailAndPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter your fist name`
+  String get plsEnterFirstName {
+    return Intl.message(
+      'Please enter your fist name',
+      name: 'plsEnterFirstName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `First name must be at least 4 characters long`
+  String get plsEnterValidFirstName {
+    return Intl.message(
+      'First name must be at least 4 characters long',
+      name: 'plsEnterValidFirstName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter your last name`
+  String get plsEnterLastName {
+    return Intl.message(
+      'Please enter your last name',
+      name: 'plsEnterLastName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Last name must be at least 4 characters long.`
+  String get plsEnterValidLastName {
+    return Intl.message(
+      'Last name must be at least 4 characters long.',
+      name: 'plsEnterValidLastName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Check Your Email`
+  String get checkYourEmail {
+    return Intl.message(
+      'Check Your Email',
+      name: 'checkYourEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We sent a verification code to`
+  String get weSentVerificationCode {
+    return Intl.message(
+      'We sent a verification code to',
+      name: 'weSentVerificationCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Verify`
+  String get verify {
+    return Intl.message(
+      'Verify',
+      name: 'verify',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Didn't receive the email?`
+  String get didntReceiveEmail {
+    return Intl.message(
+      'Didn\'t receive the email?',
+      name: 'didntReceiveEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Click to resend`
+  String get clickToResend {
+    return Intl.message(
+      'Click to resend',
+      name: 'clickToResend',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Successfully`
+  String get successfully {
+    return Intl.message(
+      'Successfully',
+      name: 'successfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your email address has been verified`
+  String get emailAddressHasBeenVerified {
+    return Intl.message(
+      'Your email address has been verified',
+      name: 'emailAddressHasBeenVerified',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Continue`
+  String get continue_ {
+    return Intl.message(
+      'Continue',
+      name: 'continue_',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Back to log in`
+  String get backToLogin {
+    return Intl.message(
+      'Back to log in',
+      name: 'backToLogin',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Max Speed`
+  String get maxSpeed {
+    return Intl.message(
+      'Max Speed',
+      name: 'maxSpeed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Engine`
+  String get engine {
+    return Intl.message(
+      'Engine',
+      name: 'engine',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Consumption`
+  String get consumption {
+    return Intl.message(
+      'Consumption',
+      name: 'consumption',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `{time} min reading time`
+  String minReadTime(Object time) {
+    return Intl.message(
+      '$time min reading time',
+      name: 'minReadTime',
+      desc: '',
+      args: [time],
     );
   }
 }

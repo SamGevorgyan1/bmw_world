@@ -1,13 +1,54 @@
 {
-    "hello": "Hello",
-    "goodbye":"Goodbye",
-    "news":"News",
-    "cars":"Cars",
-    "passwordMustContain":"Password must contain",
-    "changePassword":"Change Password",
-    "currentPassword":"Current Password",
-    "newPassword":"New Password",
-    "confirmPassword":"Confirm Password"
-    
-   
+  "settings": "Settings",
+  "helpSupport": "Help and Support",
+  "privacyData": "Privacy and Data",
+  "signOut": "Sign Out",
+  "about": "About",
+  "editProfile":"Edit Profile",
+  "welcomeBack": "Welcome Back",
+  "enterDetailsBelow": "Enter your details below",
+  "dontHaveAnAccount": "Don't have an account?",
+  "getStarted": "Get started",
+  "email": "Email",
+  "password": "Password",
+  "passwordMustContain": "Password must contain",
+  "changePassword": "Change Password",
+  "currentPassword": "Current Password",
+  "newPassword": "New Password",
+  "confirmPassword": "Confirm Password",
+  "forgotPassword": "Forgot password?",
+  "login": "Login",
+  "register": "Register",
+  "createAccount": "Create Account",
+  "alreadyHaveAccount": "Already have an account?",
+  "yourName": "Your Name",
+  "yourLastname": "Your Name",
+
+  "plsEnterEmail": "Please enter your email",
+  "plsEnterValidEmail": "Please enter a valid email",
+
+  "plsEnterPassword": "Please enter your password",
+  "plsEnterValidPassword":"Please enter a valid password",
+
+  "plsEnterValidEmailAndPassword":"Please enter valid email and password",
+
+  "plsEnterFirstName": "Please enter your fist name",
+  "plsEnterValidFirstName": "First name must be at least 4 characters long",
+  "plsEnterLastName": "Please enter your last name",
+  "plsEnterValidLastName": "Last name must be at least 4 characters long.",
+
+  "checkYourEmail": "Check Your Email",
+  "weSentVerificationCode": "We sent a verification code to",
+  "verify": "Verify",
+  "didntReceiveEmail": "Didn't receive the email?",
+  "clickToResend": "Click to resend",
+  "successfully": "Successfully",
+  "emailAddressHasBeenVerified": "Your email address has been verified",
+  "continue_": "Continue",
+  "backToLogin": "Back to log in",
+
+  "maxSpeed": "Max Speed",
+  "engine": "Engine",
+  "consumption": "Consumption",
+  "minReadTime": "{time} min reading time"
 }

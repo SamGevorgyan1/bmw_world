@@ -20,20 +20,77 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
+  static String m0(time) => "${time} min reading time";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "cars": MessageLookupByLibrary.simpleMessage("Cars"),
+        "about": MessageLookupByLibrary.simpleMessage("About"),
+        "alreadyHaveAccount":
+            MessageLookupByLibrary.simpleMessage("Already have an account?"),
+        "backToLogin": MessageLookupByLibrary.simpleMessage("Back to log in"),
         "changePassword":
             MessageLookupByLibrary.simpleMessage("Change Password"),
+        "checkYourEmail":
+            MessageLookupByLibrary.simpleMessage("Check Your Email"),
+        "clickToResend":
+            MessageLookupByLibrary.simpleMessage("Click to resend"),
         "confirmPassword":
             MessageLookupByLibrary.simpleMessage("Confirm Password"),
+        "consumption": MessageLookupByLibrary.simpleMessage("Consumption"),
+        "continue_": MessageLookupByLibrary.simpleMessage("Continue"),
+        "createAccount": MessageLookupByLibrary.simpleMessage("Create Account"),
         "currentPassword":
             MessageLookupByLibrary.simpleMessage("Current Password"),
-        "goodbye": MessageLookupByLibrary.simpleMessage("Goodbye"),
-        "hello": MessageLookupByLibrary.simpleMessage("Hello"),
+        "didntReceiveEmail":
+            MessageLookupByLibrary.simpleMessage("Didn\'t receive the email?"),
+        "dontHaveAnAccount":
+            MessageLookupByLibrary.simpleMessage("Don\'t have an account?"),
+        "editProfile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
+        "email": MessageLookupByLibrary.simpleMessage("Email"),
+        "emailAddressHasBeenVerified": MessageLookupByLibrary.simpleMessage(
+            "Your email address has been verified"),
+        "engine": MessageLookupByLibrary.simpleMessage("Engine"),
+        "enterDetailsBelow":
+            MessageLookupByLibrary.simpleMessage("Enter your details below"),
+        "forgotPassword":
+            MessageLookupByLibrary.simpleMessage("Forgot password?"),
+        "getStarted": MessageLookupByLibrary.simpleMessage("Get started"),
+        "helpSupport": MessageLookupByLibrary.simpleMessage("Help and Support"),
+        "login": MessageLookupByLibrary.simpleMessage("Login"),
+        "maxSpeed": MessageLookupByLibrary.simpleMessage("Max Speed"),
+        "minReadTime": m0,
         "newPassword": MessageLookupByLibrary.simpleMessage("New Password"),
-        "news": MessageLookupByLibrary.simpleMessage("News"),
+        "password": MessageLookupByLibrary.simpleMessage("Password"),
         "passwordMustContain":
-            MessageLookupByLibrary.simpleMessage("Password must contain")
+            MessageLookupByLibrary.simpleMessage("Password must contain"),
+        "plsEnterEmail":
+            MessageLookupByLibrary.simpleMessage("Please enter your email"),
+        "plsEnterFirstName":
+            MessageLookupByLibrary.simpleMessage("Please enter your fist name"),
+        "plsEnterLastName":
+            MessageLookupByLibrary.simpleMessage("Please enter your last name"),
+        "plsEnterPassword":
+            MessageLookupByLibrary.simpleMessage("Please enter your password"),
+        "plsEnterValidEmail":
+            MessageLookupByLibrary.simpleMessage("Please enter a valid email"),
+        "plsEnterValidEmailAndPassword": MessageLookupByLibrary.simpleMessage(
+            "Please enter valid email and password"),
+        "plsEnterValidFirstName": MessageLookupByLibrary.simpleMessage(
+            "First name must be at least 4 characters long"),
+        "plsEnterValidLastName": MessageLookupByLibrary.simpleMessage(
+            "Last name must be at least 4 characters long."),
+        "plsEnterValidPassword": MessageLookupByLibrary.simpleMessage(
+            "Please enter a valid password"),
+        "privacyData": MessageLookupByLibrary.simpleMessage("Privacy and Data"),
+        "register": MessageLookupByLibrary.simpleMessage("Register"),
+        "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+        "signOut": MessageLookupByLibrary.simpleMessage("Sign Out"),
+        "successfully": MessageLookupByLibrary.simpleMessage("Successfully"),
+        "verify": MessageLookupByLibrary.simpleMessage("Verify"),
+        "weSentVerificationCode": MessageLookupByLibrary.simpleMessage(
+            "We sent a verification code to"),
+        "welcomeBack": MessageLookupByLibrary.simpleMessage("Welcome Back"),
+        "yourLastname": MessageLookupByLibrary.simpleMessage("Your Name"),
+        "yourName": MessageLookupByLibrary.simpleMessage("Your Name")
       };
 }

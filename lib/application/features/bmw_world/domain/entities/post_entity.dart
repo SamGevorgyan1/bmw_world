@@ -24,6 +24,7 @@ class PostEntity implements DataConverter<PostEntity>  {
   Map<String, dynamic> toMap() {
     return {
       'id': id,
+      'title': title,
       'content': content,
       'likes': likes,
       'carId': carId,

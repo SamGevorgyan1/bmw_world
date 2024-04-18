@@ -1,15 +1,16 @@
 import 'package:bmw_world/application/core/resources/data_state/data_state.dart';
 import 'package:bmw_world/application/core/usecase/use_case.dart';
-import 'package:bmw_world/application/features/bmw_world/data/model/article.dart';
-import 'package:bmw_world/application/features/bmw_world/domain/repository/article_repository.dart';
+import 'package:bmw_world/application/features/bmw_world/domain/repository/bmw_world_repository.dart';
 
-class GetArticlesUseCase implements UseCase<DataState<List<ArticleModel>>, void> {
-  final ArticleRepository _articleRepository;
+import '../entities/article_entity.dart';
 
-  const GetArticlesUseCase(this._articleRepository);
+class GetArticlesUseCase implements UseCase<DataState<List<ArticleEntity>>, void> {
+  final BmwWorldRepository _bmwWorldRepository;
+
+  const GetArticlesUseCase(this._bmwWorldRepository);
 
   @override
-  Future<DataState<List<ArticleModel>>> call({void params}) {
-    return _articleRepository.getAll();
+  Future<DataState<List<ArticleEntity>>> call({void params}) {
+    return _bmwWorldRepository.getArticles();
   }
 }

@@ -1,11 +1,57 @@
 {
-    "hello": "Привет",
-    "goodbye":"Прощание",
-    "news":"Новости",
-    "cars":"Машина",
+
+    "settings": "Настройки",
+    "helpSupport": "Помощь и поддержка",
+    "privacyData": "Конфиденциальность",
+    "signOut": "Выход",
+    "about": "Информация",
+    "welcomeBack":"Добро Пожаловать",
+    "editProfile":"Редактировать",
+    "enterDetailsBelow":"Введите свои данные ниже",
+    "getStarted":"Начать",
+    "dontHaveAnAccount": "У вас нет учетной записи?",
+
+    "email":"Эл.адрес",
+    "password":"Пароль",
+
     "passwordMustContain":"Пароль должен содержать",
     "changePassword":"Изменить пароль",
     "currentPassword":"Текущий пароль",
     "newPassword":"Новый пароль",
-    "confirmPassword":"Подтвердите пароль"
+    "confirmPassword":"Подтвердите пароль",
+    "forgotPassword":"Забыли пароль?",
+    "login":"Вход",
+    "register":"Регистрация",
+    "createAccount":"Зарегистрироваться:",
+    "alreadyHaveAccount":"У вас уже есть аккаунт?",
+    "yourName":"Ваше имя",
+    "yourLastname":"Ваша фамилия",
+
+    "plsEnterEmail":"Пожалуйста, введите свой Эл.адрес",
+    "plsEnterFirstName": "Пожалуйста, введите свой имя",
+    "plsEnterValidFirstName": "Имя должно содержать не менее 4 символов.",
+
+    "plsEnterLastName":"Пожалуйста, введите свой фамилия",
+    "plsEnterValidLastName": "Фамилия должна быть длиной не менее 4 символов",
+
+    "plsEnterPassword":"Пожалуйста введите ваш пароль",
+    "plsEnterValidPassword":"Пожалуйста, введите действительный пароль",
+
+    "plsEnterValidEmail":"Введите действительный Эл.адрес",
+    "plsEnterValidEmailAndPassword":"Пожалуйста, введите действительный адрес электронной почты и пароль",
+    "checkYourEmail":"Проверьте свою почту",
+    "weSentVerificationCode": "Отправили код подтверждения на",
+    "verify": "Подтвердить",
+    "didntReceiveEmail": "Не получили письмо?",
+    "clickToResend":"Отправить снова",
+    "successfully":"Успешно",
+    "emailAddressHasBeenVerified": "Ваш адрес электронной почты подтвержден",
+    "continue_": "Продолжить",
+    "backToLogin":"Вернуться к входу",
+
+    "maxSpeed": "Макс. скорость",
+    "engine": "Двигатель",
+    "consumption": "Потребление",
+    "minReadTime": "время чтения {time} минут"
+
 }

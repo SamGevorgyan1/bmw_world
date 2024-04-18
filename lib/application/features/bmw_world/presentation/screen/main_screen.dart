@@ -1,8 +1,9 @@
-import 'package:bmw_world/application/features/bmw_world/presentation/screen/main/article/article_screen.dart';
-import 'package:bmw_world/application/features/bmw_world/presentation/screen/main/post/post_screen.dart';
+import 'package:bmw_world/application/features/bmw_world/presentation/screen/article/article_screen.dart';
+import 'package:bmw_world/application/features/bmw_world/presentation/screen/post/post_screen.dart';
+import 'package:bmw_world/resources/resources.dart';
 import 'package:flutter/material.dart';
 import '../../../../config/themes/custom_theme/color_theme.dart';
-import 'main/profile/profile_screen.dart';
+import 'profile/profile_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -46,10 +47,10 @@ class _MainScreenState extends State<MainScreen> {
             // icon: Icon(Icons.article_outlined),
             // activeIcon: Icon(Icons.article_rounded),
             icon: Image.asset(
-              "assets/icons/ic_bmw.png",
+              AppImages.icBmw,
               color: colorSchemeDark.secondary,
             ),
-            activeIcon: Image.asset("assets/icons/ic_bmw_active.png"),
+            activeIcon: Image.asset(AppImages.icBmwActive),
           ),
           const BottomNavigationBarItem(
             label: '',

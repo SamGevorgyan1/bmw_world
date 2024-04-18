@@ -5,11 +5,22 @@ class DataState<T> {
   const DataState({this.data, this.exception});
 
   factory DataState.success(T data) {
-    return DataSuccess(data);
+    return DataSuccess<T>( data);
   }
 
   factory DataState.error(Object exception) {
     return DataFailed(exception);
+  }
+
+  R when<R>({
+    required R Function(T data) success,
+    required R Function(Object exception) failure,
+  }) {
+    if (data != null) {
+      return success(data!);
+    } else {
+      return failure(exception!);
+    }
   }
 }
 
