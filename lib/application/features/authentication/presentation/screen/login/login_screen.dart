@@ -1,14 +1,15 @@
 import 'package:bmw_world/application/core/extension/validator.dart';
+import 'package:bmw_world/application/di/injection_container.dart';
 import 'package:bmw_world/application/features/authentication/presentation/widgets/app_bar_widget.dart';
+import 'package:bmw_world/application/features/bmw_world/presentation/screen/main_screen.dart';
 import 'package:bmw_world/resources/resources.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 import '../../../../../../generated/l10n.dart';
-import '../../../../bmw_world/presentation/screen/main_screen.dart';
 import '../../../../../core/helper/error_handler.dart';
 import '../../widgets/error_widget.dart';
-import 'bloc/auth_bloc.dart';
+import 'bloc/login_bloc.dart';
 
 /// Class for storing authentication data
 class _AuthDataStorage {
@@ -22,15 +23,18 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<AuthBloc, AuthState>(
-      listener: (context, state) => _handleAuthState(context, state),
-      child: const _LoginScreenContent(),
+    return BlocProvider(
+      create: (context) => sl<LoginBloc>(),
+      child: BlocListener<LoginBloc, LoginState>(
+        listener: (context, state) => _handleAuthState(context, state),
+        child: const _LoginScreenContent(),
+      ),
     );
   }
 
   /// Handle authentication state
-  void _handleAuthState(BuildContext context, AuthState state) {
-    if (state is AuthAuthorizedState) {
+  void _handleAuthState(BuildContext context, LoginState state) {
+    if (state.isLoginSuccess!) {
       /// Navigate to the main screen if authorized
       Navigator.pushAndRemoveUntil(
         context,
@@ -38,10 +42,10 @@ class LoginScreen extends StatelessWidget {
         (route) => false,
       );
     }
-    if (state is AuthFailureState) {
+    if (state.loginError != null) {
       /// Show error message if authentication fails
       final errorMessage = getExceptionMessage(
-        exception: state.exception,
+        exception: state.loginError,
         badRequestMessage: "Wrong email or password",
       );
       ScaffoldMessenger.of(context).showSnackBar(
@@ -176,7 +180,7 @@ class LoginButton extends StatelessWidget {
   const LoginButton({Key? key}) : super(key: key);
 
   void onPressed(BuildContext context) {
-    final authBloc = BlocProvider.of<AuthBloc>(context);
+    final loginBloc = BlocProvider.of<LoginBloc>(context);
     final authDataStorage = Provider.of<_AuthDataStorage>(context, listen: false);
     String errorMessage = "";
     final isValidEmail = authDataStorage.email.isValidEmail;
@@ -190,30 +194,29 @@ class LoginButton extends StatelessWidget {
       errorMessage = S().plsEnterValidPassword;
     }
 
-   if (!isValidEmail || !isValidPassword) {
-     ScaffoldMessenger.of(context).showSnackBar(
-       errorSnackBarWidget(context, errorMessage),
-     );
-     return;
-   }
-    authBloc.add(
-      AuthLoginEvent(
-        login: authDataStorage.email,
-        password: authDataStorage.password,
+    if (!isValidEmail || !isValidPassword) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        errorSnackBarWidget(context, errorMessage),
+      );
+      return;
+    }
+    loginBloc.add(
+      LoginEvent.emailAndPassword(
+        authDataStorage.email,
+        authDataStorage.password,
       ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AuthBloc, AuthState>(
+    return BlocBuilder<LoginBloc, LoginState>(
       builder: (context, state) {
-        final child = state is AuthInProgressState
-            ? const CircularProgressIndicator()
-            : Text(S.of(context).login);
+        final child =
+            state.isLoading! ? const CircularProgressIndicator() : Text(S.of(context).login);
 
         return ElevatedButton(
-          onPressed: state is AuthInProgressState ? null : () => onPressed(context),
+          onPressed: state.isLoading! ? null : () => onPressed(context),
           style: ElevatedButton.styleFrom(
             backgroundColor: Theme.of(context).colorScheme.primary,
             foregroundColor: Theme.of(context).colorScheme.surface,

@@ -20,6 +20,8 @@ sealed class RegisterEvent {
   factory RegisterEvent.sendVerificationCode() => const _SendVerificationCode();
 
   factory RegisterEvent.verify(String verifyCode) => _VerifyUserEvent(verifyCode);
+
+  factory RegisterEvent.login() => const _LoginEvent();
 }
 
 final class _RegisterButtonPressedEvent extends RegisterEvent {
@@ -46,3 +48,6 @@ final class _VerifyUserEvent extends RegisterEvent {
   const _VerifyUserEvent(this.verifyCode);
 }
 
+final class _LoginEvent extends RegisterEvent {
+  const _LoginEvent();
+}

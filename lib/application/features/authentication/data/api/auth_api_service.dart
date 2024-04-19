@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 
 import '../../../../core/constants/constants.dart';
-import '../dto/auth_response.dart';
+import '../../domain/dto/auth_response.dart';
 
 part 'auth_api_service.g.dart';
 
@@ -11,7 +11,7 @@ abstract class AuthApiService {
   factory AuthApiService(Dio dio) = _AuthApiService;
 
   @POST('/login')
-  Future<HttpResponse<AuthResponse>> login(@Body() Map<String, dynamic> registerBody);
+  Future<HttpResponse<AuthResponse>> login(@Body() Map<String, dynamic> loginBody);
 
   @POST('/register')
   Future<HttpResponse<void>> register(@Body() Map<String, dynamic> registerBody);

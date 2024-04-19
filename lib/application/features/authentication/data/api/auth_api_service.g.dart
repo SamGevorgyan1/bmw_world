@@ -22,12 +22,12 @@ class _AuthApiService implements AuthApiService {
 
   @override
   Future<HttpResponse<AuthResponse>> login(
-      Map<String, dynamic> registerBody) async {
+      Map<String, dynamic> loginBody) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    _data.addAll(registerBody);
+    _data.addAll(loginBody);
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<HttpResponse<AuthResponse>>(Options(
       method: 'POST',

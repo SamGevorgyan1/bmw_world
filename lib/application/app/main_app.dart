@@ -1,14 +1,9 @@
 import 'package:bmw_world/application/config/themes/theme.dart';
 import 'package:bmw_world/application/config/themes/theme_manager.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-
 import '../../generated/l10n.dart';
-
-import '../di/injection_container.dart';
 import '../features/authentication/presentation/screen/auth_screen.dart';
-import '../features/authentication/presentation/screen/login/bloc/auth_bloc.dart';
 
 ThemeManager themeManager = ThemeManager();
 
@@ -40,31 +35,24 @@ class _MainAppState extends State<MainApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (BuildContext context) => sl.get<AuthBloc>(),
-        ),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      debugShowMaterialGrid: false,
+      showPerformanceOverlay: false,
+      checkerboardRasterCacheImages: false,
+      checkerboardOffscreenLayers: false,
+      localizationsDelegates: const [
+        S.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
       ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        debugShowMaterialGrid: false,
-        showPerformanceOverlay: false,
-        checkerboardRasterCacheImages: false,
-        checkerboardOffscreenLayers: false,
-        localizationsDelegates: const [
-          S.delegate,
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-        ],
-        supportedLocales: S.delegate.supportedLocales,
-        locale: const Locale('en'),
-        theme: lightTheme,
-        darkTheme: darkTheme,
-        themeMode: themeManager.themeMode,
-        home: const AuthScreen(),
-      ),
+      supportedLocales: S.delegate.supportedLocales,
+      locale: const Locale('en'),
+      theme: lightTheme,
+      darkTheme: darkTheme,
+      themeMode: themeManager.themeMode,
+      home: const AuthScreen(),
     );
   }
 }

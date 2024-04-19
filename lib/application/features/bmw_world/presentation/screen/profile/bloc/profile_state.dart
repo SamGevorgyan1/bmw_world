@@ -3,17 +3,22 @@ part of 'profile_bloc.dart';
 @immutable
 class ProfileState {
   final Object? profileError;
+  final Object? logoutError;
   final bool? isLoading;
   final bool? isProfileSuccess;
+  final bool? isLogoutSuccess;
   final String? firstName;
   final String? lastName;
   final String? email;
   final String? imageUrl;
 
+
   const ProfileState({
     this.profileError,
+    this.logoutError,
     this.isLoading,
     this.isProfileSuccess,
+    this.isLogoutSuccess,
     this.firstName,
     this.lastName,
     this.email,
@@ -23,6 +28,7 @@ class ProfileState {
   factory ProfileState.initial() => const ProfileState(
         isLoading: false,
         isProfileSuccess: false,
+        isLogoutSuccess: false,
       );
 
   ProfileState loading() {
@@ -31,6 +37,14 @@ class ProfileState {
 
   ProfileState profileErrorState(Object error) {
     return copyWith(profileError: error);
+  }
+
+  ProfileState logoutErrorState(Object error) {
+    return copyWith(logoutError: error);
+  }
+
+  ProfileState logoutSuccess() {
+    return copyWith(isLogoutSuccess: true);
   }
 
   ProfileState userLoaded({required User user}) {
@@ -47,8 +61,10 @@ class ProfileState {
 
   ProfileState copyWith({
     Object? profileError,
+    Object? logoutError,
     bool? isLoading,
     bool? isProfileSuccess,
+    bool? isLogoutSuccess,
     String? firstName,
     String? lastName,
     String? email,
@@ -56,8 +72,10 @@ class ProfileState {
   }) {
     return ProfileState(
       profileError: profileError ?? this.profileError,
+      logoutError: logoutError ?? this.logoutError,
       isLoading: isLoading ?? this.isLoading,
       isProfileSuccess: isProfileSuccess ?? this.isProfileSuccess,
+      isLogoutSuccess: isLogoutSuccess ?? this.isLogoutSuccess,
       firstName: firstName ?? this.firstName,
       lastName: lastName ?? this.lastName,
       email: email ?? this.email,

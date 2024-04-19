@@ -12,7 +12,7 @@ class PostDatabase extends BaseDatabase<PostEntity> {
   Future<Database> initDb() async {
     try {
       String databasesPath = await getDatabasesPath();
-      String path = join(databasesPath, 'posts.db');
+      String path = join(databasesPath, 'bmw_world.db');
       return await openDatabase(path, version: 1, onCreate: _onCreate);
     } catch (e) {
       return Future.error(e);

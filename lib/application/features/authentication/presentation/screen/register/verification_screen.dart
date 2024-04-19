@@ -22,8 +22,11 @@ class VerificationScreen extends StatelessWidget {
             if (isVerificationSuccess) {
               _scaffoldKey.currentState?.showBottomSheet(
                 enableDrag: true,
-                (context) {
-                  return const SuccessScreen();
+                (_) {
+                  return BlocProvider.value(
+                    value: BlocProvider.of<RegisterBloc>(context),
+                    child: const SuccessScreen(),
+                  );
                 },
               );
             }

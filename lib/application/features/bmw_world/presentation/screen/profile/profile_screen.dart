@@ -1,5 +1,4 @@
 import 'package:bmw_world/application/features/authentication/presentation/screen/auth_screen.dart';
-import 'package:bmw_world/application/features/authentication/presentation/screen/login/bloc/auth_bloc.dart';
 import 'package:bmw_world/application/features/bmw_world/presentation/screen/profile/bloc/profile_bloc.dart';
 import 'package:bmw_world/application/features/bmw_world/presentation/screen/setting/setting_screen.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -8,7 +7,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../../generated/l10n.dart';
 import '../../../../../di/injection_container.dart';
-
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -29,65 +27,71 @@ class ProfileScreen extends StatelessWidget {
 class ProfileView extends StatelessWidget {
   const ProfileView({Key? key}) : super(key: key);
 
-  void onPressedSignOut(BuildContext context) async {
-   context.read<AuthBloc>().add(const AuthLogoutEvent());
-    Navigator.pushAndRemoveUntil(
-      context,
-      MaterialPageRoute(builder: (context) => const AuthScreen()),
-      (route) => false,
-    );
+  void onPressedSignOut(BuildContext context) {
+    context.read<ProfileBloc>().add(ProfileEvent.logout());
   }
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SizedBox(height: MediaQuery.of(context).padding.top + 20),
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 30),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              UserImage(),
-              SizedBox(width: 16),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  UserNameAndEmail(),
-                  SizedBox(height: 4),
-                  EditProfileButton(),
-                ],
-              ),
-            ],
-          ),
-        ),
-        const SizedBox(height: 14),
-        const Divider(),
-        const SizedBox(height: 30),
-        Expanded(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
+    return BlocListener<ProfileBloc, ProfileState>(
+      listener: (context, state) {
+        if (state.isLogoutSuccess!) {
+          Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(builder: (context) => const AuthScreen()),
+            (route) => false,
+          );
+        }
+      },
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(height: MediaQuery.of(context).padding.top + 20),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 30),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const MenuButtons(),
-                const SizedBox(height: 30),
-                MenuButton(
-                  label: S().about,
-                  iconData: Icons.info,
-                  onPressed: () {},
-                ),
-                const SizedBox(height: 14),
-                MenuButton(
-                  label: S().signOut,
-                  iconData: Icons.logout,
-                  onPressed: () => onPressedSignOut(context),
+                UserImage(),
+                SizedBox(width: 16),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    UserNameAndEmail(),
+                    SizedBox(height: 4),
+                    EditProfileButton(),
+                  ],
                 ),
               ],
             ),
           ),
-        ),
-      ],
+          const SizedBox(height: 14),
+          const Divider(),
+          const SizedBox(height: 30),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Column(
+                children: [
+                  const MenuButtons(),
+                  const SizedBox(height: 30),
+                  MenuButton(
+                    label: S().about,
+                    iconData: Icons.info,
+                    onPressed: () {},
+                  ),
+                  const SizedBox(height: 14),
+                  MenuButton(
+                    label: S().signOut,
+                    iconData: Icons.logout,
+                    onPressed: () => onPressedSignOut(context),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -180,9 +184,7 @@ class UserImage extends StatelessWidget {
             borderRadius: BorderRadius.circular(radius),
             image: DecorationImage(
               image: CachedNetworkImageProvider(
-
                 state.imageUrl ?? '',
-
               ),
               fit: BoxFit.cover,
             ),

@@ -1,5 +1,11 @@
-import 'package:bmw_world/application/features/authentication/data/data_provider/token_provider.dart';
-import 'package:bmw_world/application/features/authentication/data/data_provider/user_provider.dart';
+import 'package:bmw_world/application/features/authentication/data/authentication_storage_provider/authentication_provider.dart';
+import 'package:bmw_world/application/features/authentication/domain/usecase/login_usecase.dart';
+import 'package:bmw_world/application/features/authentication/domain/usecase/logout_usecase.dart';
+import 'package:bmw_world/application/features/authentication/domain/usecase/registration_usecase.dart';
+import 'package:bmw_world/application/features/authentication/domain/usecase/send_verify_code_usecase.dart';
+import 'package:bmw_world/application/features/authentication/domain/usecase/verify_usecase.dart';
+import 'package:bmw_world/application/features/authentication/presentation/screen/auth_bloc/auth_bloc.dart';
+import 'package:bmw_world/application/features/authentication/presentation/screen/login/bloc/login_bloc.dart';
 import 'package:bmw_world/application/features/authentication/presentation/screen/register/bloc/register_bloc.dart';
 import 'package:bmw_world/application/features/bmw_world/data/data_source/dao/article_database.dart';
 import 'package:bmw_world/application/features/bmw_world/data/data_source/dao/post_database.dart';
@@ -26,7 +32,6 @@ import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 import '../core/constants/constants.dart';
-import '../features/authentication/presentation/screen/login/bloc/auth_bloc.dart';
 import '../dio_interceptor.dart';
 import '../features/bmw_world/data/repository/bmw_world_repository_impl.dart';
 
@@ -37,13 +42,28 @@ void initializeDependencies() {
   sl.registerSingleton<FlutterSecureStorage>(const FlutterSecureStorage());
 
   // Data Provider
-  sl.registerSingleton<TokenProvider>(TokenProvider(sl()));
-  sl.registerSingleton<UserProvider>(UserProvider(sl()));
+  sl.registerSingleton<AuthenticationProvider>(AuthenticationProvider(sl()));
 
   // Dio
   Dio dio = Dio(BaseOptions(baseUrl: bmwWoldApiUrl));
   dio.interceptors.add(DioInterceptor());
   sl.registerSingleton<Dio>(dio);
+
+  // Auth
+  sl.registerSingleton<AuthApiService>(AuthApiService(sl()));
+  sl.registerSingleton<AuthRepository>(AuthRepositoryImpl(sl(), sl()));
+
+  // Authentication UseCases
+  sl.registerSingleton<RegistrationUseCase>(RegistrationUseCase(sl()));
+  sl.registerSingleton<VerifyUseCase>(VerifyUseCase(sl()));
+  sl.registerSingleton<SendVerifyCodeUseCase>(SendVerifyCodeUseCase(sl()));
+  sl.registerSingleton<LoginUseCase>(LoginUseCase(sl()));
+  sl.registerSingleton<LogoutUseCase>(LogoutUseCase(sl()));
+
+  // Authentication blocs
+  sl.registerFactory<AuthBloc>(() => AuthBloc(sl()));
+  sl.registerFactory<RegisterBloc>(() => RegisterBloc(sl(), sl(), sl(), sl()));
+  sl.registerFactory<LoginBloc>(() => LoginBloc(sl()));
 
   // Post local
   sl.registerSingleton<PostDatabase>(PostDatabase());
@@ -53,16 +73,8 @@ void initializeDependencies() {
   sl.registerSingleton<ArticleDatabase>(ArticleDatabase());
   sl.registerSingleton<ArticleLocalService>(ArticleLocalServiceImpl(sl()));
 
-  // Auth
-  sl.registerSingleton<AuthApiService>(AuthApiService(sl()));
-  sl.registerSingleton<AuthRepository>(AuthRepositoryImpl(sl()));
-  sl.registerSingleton<AuthBloc>(AuthBloc(sl(), sl(), sl()));
-  sl.registerSingleton<RegisterBloc>(RegisterBloc(sl()));
-
-  // Api
-  sl.registerSingleton<BmwWorldApiService>(BmwWorldApiService(sl()));
-
   // Repository
+  sl.registerSingleton<BmwWorldApiService>(BmwWorldApiService(sl()));
   sl.registerSingleton<BmwWorldRepository>(BmwWorldRepositoryImpl(sl(), sl(), sl()));
 
   // Post
@@ -74,7 +86,7 @@ void initializeDependencies() {
   sl.registerFactory<ArticleListBloc>(() => ArticleListBloc(sl()));
 
   // Article details
-  sl.registerFactory<GetArticleUseCase>(() => GetArticleUseCase(sl()));
+  sl.registerSingleton<GetArticleUseCase>(GetArticleUseCase(sl()));
   sl.registerFactory<ArticleDetailsBloc>(() => ArticleDetailsBloc(sl()));
 
   // Car details
@@ -83,5 +95,5 @@ void initializeDependencies() {
 
   // Profile
   sl.registerSingleton<GetUserUseCase>(GetUserUseCase(sl()));
-  sl.registerFactory<ProfileBloc>(() => ProfileBloc(sl()));
+  sl.registerFactory<ProfileBloc>(() => ProfileBloc(sl(), sl()));
 }

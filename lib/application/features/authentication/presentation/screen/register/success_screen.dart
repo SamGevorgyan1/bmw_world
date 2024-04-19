@@ -1,4 +1,3 @@
-import 'package:bmw_world/application/features/authentication/presentation/screen/login/bloc/auth_bloc.dart';
 import 'package:bmw_world/application/features/authentication/presentation/screen/login/login_screen.dart';
 import 'package:bmw_world/application/features/authentication/presentation/screen/register/bloc/register_bloc.dart';
 import 'package:bmw_world/application/features/bmw_world/presentation/screen/main_screen.dart';
@@ -11,11 +10,7 @@ class SuccessScreen extends StatelessWidget {
   const SuccessScreen({Key? key}) : super(key: key);
 
   void onPressedContinue(BuildContext context) {
-    final state = context.read<RegisterBloc>().state;
-    context.read<AuthBloc>().add(AuthLoginEvent(
-          login: state.email!,
-          password: state.password!,
-        ));
+    context.read<RegisterBloc>().add(RegisterEvent.login());
   }
 
   void onPressedBackToLogin(BuildContext context) {
@@ -30,9 +25,9 @@ class SuccessScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<AuthBloc, AuthState>(
+    return BlocListener<RegisterBloc, RegisterState>(
       listener: (context, state) {
-        if (state is AuthAuthorizedState) {
+        if (state.isLoginSuccess!) {
           Navigator.pushAndRemoveUntil(
             context,
             MaterialPageRoute(
